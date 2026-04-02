@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+    void func1(void){
+        printf("func1 was called! \n");
+    }
+
+    void func2(void){
+        printf("func2 was called! \n");
+    }
+
+    void (* whatFunction(int sel)) (void){ // literally a menu to choose which function to call
+        if(sel==1)
+            return func1;
+        
+        else if(sel==2)
+            return func2;
+
+        else return NULL;
+    }
+
+    void main(void){
+        void (*fPtr)(void);
+        fPtr=whatFunction(1); // assign the function pointer to the function returned by whatFunction based on the selection
+           fPtr();
+        fPtr=whatFunction(2);  // placed 2 in there to call func2 instead of func1
+            fPtr();
+        printf("\n");
+        }
